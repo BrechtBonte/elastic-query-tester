@@ -1,7 +1,6 @@
 // Range query
 function RangeQuery()
 {
-	// https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-range-query.html
 	var _fieldName,
 		_lower,
 		_lowerInclude,
@@ -9,6 +8,51 @@ function RangeQuery()
 		_upperInclude,
 		_timeZone,
 		_boost;
+
+	this.getInfo = function()
+	{
+		return {
+			'name': 'Range Query',
+			'text': 'The range query is used to query ranges..',
+			'url': 'https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-range-query.html',
+			'form': {
+				'fieldName': {
+					'type': 'text',
+					'required': true,
+					'value': _fieldName
+				},
+				'lowerLimit': {
+					'type': 'text',
+					'required': false,
+					'value': _lower
+				},
+				'includeLowerLimit': {
+					'type': 'bool',
+					'value': _lowerInclude
+				},
+				'upperLimit': {
+					'type': 'text',
+					'required': false,
+					'value': _upper
+				},
+				'includeUpperLimit': {
+					'type': 'bool',
+					'value': _upperInclude
+				},
+				'timeZone': {
+					'type': 'text',
+					'required': false,
+					'note': 'only use this when querying date fields',
+					'value': _timeZone
+				},
+				'boost': {
+					'type': 'text',
+					'required': false,
+					'value': _boost
+				}
+			}
+		};
+	}
 
 	this.getFieldName = function()
 	{

@@ -1,12 +1,32 @@
 // Bool query
 function BoolQuery()
 {
-	// https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-bool-query.html
 	var _must = [],
 		_mustNot = [],
 		_should = [],
 		_minimumMatches,
 		_boost;
+
+	this.getInfo = function()
+	{
+		return {
+			'name': 'Bool Query',
+			'text': 'The bool query is used to apply multiple queries',
+			'url': 'https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-bool-query.html',
+			'form': {
+				'minimumMatches': {
+					'type': 'text',
+					'required': false,
+					'value': _minimumMatches
+				},
+				'boost': {
+					'type': 'text',
+					'required': false,
+					'value': _boost
+				}
+			}
+		};
+	}
 
 	this.addMust = function(query)
 	{

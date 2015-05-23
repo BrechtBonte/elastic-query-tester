@@ -3,6 +3,14 @@ function MainQuery()
 {
 	var _query;
 
+	this.getInfo = function()
+	{
+		return {
+			'name': 'Main Query',
+			'text': 'This is the main query, it all starts from here'
+		};
+	}
+
 	this.addNesting = function(name, part)
 	{
 		if (name == 'query') {

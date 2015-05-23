@@ -6,6 +6,32 @@ function TermQuery()
 		_value,
 		_boost;
 
+	this.getInfo = function()
+	{
+		return {
+			'name': 'Term Query',
+			'text': 'The term query allows you to query terms',
+			'url': 'https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-term-query.html',
+			'form': {
+				'fieldName': {
+					'type': 'text',
+					'required': true,
+					'value': _fieldName
+				},
+				'value': {
+					'type': 'text',
+					'required': true,
+					'value': _value
+				},
+				'boost': {
+					'type': 'text',
+					'required': false,
+					'value': _boost
+				}
+			}
+		};
+	}
+
 	this.getFieldName = function()
 	{
 		return _fieldName;

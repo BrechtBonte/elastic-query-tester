@@ -11,10 +11,7 @@ $(document).ready(function() {
 	}
 
 	// get base blocks
-	var mainQueryBlock = $("#main-query"),
-		formTitle = $("#form-title"),
-		blockForm = $("#block-form");
-
+	var mainQueryBlock = $("#main-query");
 	var mainQuery = new MainQuery();
 	mainQueryBlock.data('part', mainQuery);
 
@@ -31,6 +28,62 @@ $(document).ready(function() {
 	$.each($('.nesting-select'), function() {
 		initSelect($(this));
 	});
+
+
+	// listener for selecting blocks
+	var infoTitle = $('#info-title'),
+		formContainer = $('#form-container'),
+		formFieldsContainer = $('#fields-container'),
+		blockForm = formFieldsContainer.closest('form'),
+		infoBlock = $('#info-block'),
+		infoTextContainer = $('#info-text-container'),
+		urlBlock = $('#url-block'),
+		urlContainer = $('#url-container');
+
+	var loadInfoForPart = function(part)
+	{
+		var info = part.getInfo();
+
+		infoTitle.html(info.name);
+		
+		if (info.text) {
+			infoTextContainer.html(info.text);
+			infoBlock.show();
+		} else {
+			infoBlock.hide();
+		}
+
+		if (info.url) {
+			urlContainer.html('<a href="' + info.url + '" target="_blank">More info</a>');
+			urlBlock.show();
+		} else {
+			urlBlock.hide();
+		}
+
+		if (info.form) {
+			formContainer.show();
+		} else {
+			formContainer.hide();
+		}
+	}
+
+	var selectBlock = function(block)
+	{
+		var part = block.data('part');
+
+		$('.query-block').removeClass('selected');
+		block.addClass('selected');
+
+		loadInfoForPart(part);
+	}
+
+	$('#query-tab').on('click', '.query-block', function(e) {
+		e.preventDefault();
+		e.stopPropagation();
+
+		selectBlock($(this));
+	});
+	selectBlock(mainQueryBlock);
 
 
 	// listener for adding new blocks
@@ -76,6 +129,7 @@ $(document).ready(function() {
 		select.before( block );
 
 		parentPart.addNesting(nestingName, part);
+		selectBlock(block);
 
 		// reset
 		select.val('');
@@ -91,13 +145,15 @@ $(document).ready(function() {
 
 		var block = $(this).closest('.query-block'),
 			part = block.data('part'),
-			parentPart = block.parent().closest('.query-block').data('part'),
+			parentBlock = block.parent().closest('.query-block'),
+			parentPart = parentBlock.data('part'),
 			nestingSelect = block.closest('.nesting').children('.nesting-select'),
 			nestingName = nestingSelect.data('name');
 
 		block.remove();
 		parentPart.removeNesting(nestingName, part);
 		nestingSelect.show();
+		selectBlock(parentBlock);
 	});
 
 });

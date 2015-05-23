@@ -1,10 +1,31 @@
 // Nested query
 function NestedQuery()
 {
-	// https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-nested-query.html
 	var _path,
 		_query,
 		_scoreMode = 'avg';
+
+	this.getInfo = function()
+	{
+		return {
+			'name': 'Nested Query',
+			'text': 'The nested query is necessary for querying fields from nested objects',
+			'url': 'https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-nested-query.html',
+			'form': {
+				'path': {
+					'type': 'text',
+					'required': true,
+					'value': _path
+				},
+				'scoreMode': {
+					'type': 'dropdown',
+					'choices': ['avg', 'sum', 'max', 'none'],
+					'required': true,
+					'value': _scoreMode
+				}
+			}
+		};
+	}
 
 	this.getPath = function()
 	{

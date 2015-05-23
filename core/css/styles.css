@@ -9,3 +9,7 @@
 .query-block.query {
 	background-color: yellow;
 }
+
+.query-block.selected {
+	border-color: blue;
+}
