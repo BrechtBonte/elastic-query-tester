@@ -9,6 +9,11 @@ function RangeQuery()
 		_timeZone,
 		_boost;
 
+	this.getType = function()
+	{
+		return 'query';
+	}
+
 	this.getInfo = function()
 	{
 		return {

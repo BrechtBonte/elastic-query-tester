@@ -5,6 +5,11 @@ function NestedQuery()
 		_query,
 		_scoreMode = 'avg';
 
+	this.getType = function()
+	{
+		return 'query';
+	}
+
 	this.getInfo = function()
 	{
 		return {

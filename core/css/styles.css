@@ -6,8 +6,8 @@
 	margin-bottom: 10px;
 }
 
-.query-block.query {
-	background-color: yellow;
+.query-block.type-query {
+	background-color: #FFFFE8;
 }
 
 .query-block.selected {

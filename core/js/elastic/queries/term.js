@@ -1,10 +1,14 @@
 // Term query
 function TermQuery()
 {
-	// https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-term-query.html
 	var _fieldName,
 		_value,
 		_boost;
+
+	this.getType = function()
+	{
+		return 'query';
+	}
 
 	this.getInfo = function()
 	{

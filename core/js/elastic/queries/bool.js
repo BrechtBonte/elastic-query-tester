@@ -7,6 +7,11 @@ function BoolQuery()
 		_minimumMatches,
 		_boost;
 
+	this.getType = function()
+	{
+		return 'query';
+	}
+
 	this.getInfo = function()
 	{
 		return {

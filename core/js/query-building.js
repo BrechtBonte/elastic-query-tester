@@ -121,7 +121,7 @@ $(document).ready(function() {
 		var partConstructor = window[className];
 		var part = new partConstructor();
 
-		var block = $('<div>').addClass('query-block');
+		var block = $('<div>').addClass('query-block').addClass('type-' + part.getType());
 		block.append('<h2>' + part.getInfo().name + '<button class="close" type="button">×</button></h2>');
 
 		if (!$.isEmptyObject(part.getNestings())) {
@@ -189,6 +189,7 @@ $(document).ready(function() {
 	// handle form submit
 	var blockForm = formFieldsContainer.closest('form'),
 		formFeedback = $('#form-feedback');
+
 	blockForm.on('submit', function(e) {
 		e.preventDefault();
 
