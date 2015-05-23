@@ -61,6 +61,11 @@ function TermQuery()
 		return _fieldName && _value;
 	}
 
+	this.canRun = function()
+	{
+		return this.isSetUp();
+	}
+
 	this.toJson = function()
 	{
 		var jsonObject = {"term": {}};
@@ -73,6 +78,6 @@ function TermQuery()
 			jsonObject.term[ _fieldName ] = _value;
 		}
 
-		return JSON.stringify( jsonObject );
+		return JSON.stringify(jsonObject);
 	}
 }

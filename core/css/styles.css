@@ -10,6 +10,10 @@
 	background-color: #FFFFE8;
 }
 
+.query-block.incomplete {
+	border-color: red;
+}
+
 .query-block.selected {
 	border-color: blue;
 }

@@ -22,11 +22,8 @@
 				</div>
 				<div class="form-inline nav navbar-nav navbar-form">
 					<select id="index-select" class="form-control" style="display:none"></select>
+					<select id="type-select" class="form-control" style="display:none"></select>
 				</div>
-				<ul id="main-nav" class="nav navbar-nav navbar-right" style="display:none">
-					<li class="active"><a id="query-tab-header " href="#">Querry</a></li>
-					<li class="disabled"><a id="result-tab-header" href="#">Result</a></li>
-				</ul>
 			</div>
 		</nav>
 	</header>
@@ -38,7 +35,8 @@
 				<div class="row">
 
 					<div class="col-md-8">
-						<div id="main-query" class="query-block">
+						<div id="main-query" class="query-block incomplete">
+							<a id="run-btn" class="btn btn-primary pull-right" href="#" role="button">Run Query</a>
 							<h2>Query Builder</h2>
 
 							<div class="nesting form-inline">
@@ -78,13 +76,7 @@
 							<div id="url-container" class="panel-body"></div>
 						</div>
 					</div>
-
 				</div>
-
-			</section>
-
-			<section id="result-tab" style="display:none">
-
 			</section>
 		</div>
 	</div>
@@ -99,8 +91,9 @@
 	<script src="core/js/elastic/queries/nested.js"></script>
 	<script src="core/js/elastic/queries/range.js"></script>
 	<script src="core/js/elastic/queries/term.js"></script>
-	<script src="core/js/query-building.js"></script>
 
+	<script src="core/js/query-building.js"></script>
 	<script src="core/js/main.js"></script>
+	<script src="core/js/results.js"></script>
 </body>
 </html>

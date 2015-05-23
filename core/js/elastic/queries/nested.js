@@ -25,7 +25,7 @@ function NestedQuery()
 				'score mode': {
 					'type': 'dropdown',
 					'options': ['avg', 'sum', 'max', 'none'],
-					'required': true,
+					'required': false,
 					'value': _scoreMode
 				}
 			}
@@ -73,6 +73,11 @@ function NestedQuery()
 		return _path && _query;
 	}
 
+	this.canRun = function()
+	{
+		return this.isSetUp() && _query && _query.canRun();
+	}
+
 	this.toJson = function()
 	{
 		var jsonObject = {
@@ -82,6 +87,7 @@ function NestedQuery()
 				"query": _query.toJson()
 			}
 		};
+
 		return JSON.stringify(jsonObject);
 	}
 }

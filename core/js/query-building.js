@@ -10,12 +10,25 @@ $(document).ready(function() {
 		}
 	}
 
-	// get base blocks
-	var mainQueryBlock = $("#main-query");
+	var mainQueryBlock = $("#main-query"),
+		runBtn = $('#run-btn');
 	var mainQuery = new MainQuery();
 	mainQueryBlock.data('part', mainQuery);
 
 	
+	var updateRunBtn = function()
+	{
+		if (mainQuery.canRun()) {
+			runBtn.removeClass('disabled');
+			runBtn.attr('title', '');
+			runBtn.data('query', mainQuery.toJson());
+		} else {
+			runBtn.addClass('disabled');
+			runBtn.attr('title', 'Query is incomplete, check blocks with red borders');
+		}
+	}
+	updateRunBtn();
+
 	// inintializing nested selects
 	var initSelect = function(select) {
 		var type = select.data('type');
@@ -142,6 +155,9 @@ $(document).ready(function() {
 			});
 		}
 
+		if (!part.isSetUp()) {
+			block.addClass('incomplete');
+		}
 		block.data('part', part);
 		return block;
 	}
@@ -151,13 +167,20 @@ $(document).ready(function() {
 			nestingName = select.data('name'),
 			allowsMultiple = select.data('multiple'),
 			className = select.val(),
-			parentPart = select.closest('.query-block').data('part');
+			parentBlock = select.closest('.query-block'),
+			parentPart = parentBlock.data('part');
 
 		var block = createBlockForClassName(className);
 		var part = block.data('part');
 		select.before( block );
 
 		parentPart.addNesting(nestingName, part);
+		if (parentPart.isSetUp()) {
+			parentBlock.removeClass('incomplete');
+		} else {
+			parentBlock.addClass('incomplete');
+		}
+		updateRunBtn();
 		selectBlock(block);
 
 		// reset
@@ -181,6 +204,12 @@ $(document).ready(function() {
 
 		block.remove();
 		parentPart.removeNesting(nestingName, part);
+		if (parentPart.isSetUp()) {
+			parentBlock.removeClass('incomplete');
+		} else {
+			parentBlock.addClass('incomplete');
+		}
+		updateRunBtn();
 		nestingSelect.show();
 		selectBlock(parentBlock);
 	});
@@ -193,7 +222,8 @@ $(document).ready(function() {
 	blockForm.on('submit', function(e) {
 		e.preventDefault();
 
-		var selectedPart = mainQueryBlock.find('.query-block.selected').data('part'),
+		var selectedBlock = mainQueryBlock.find('.query-block.selected'),
+			selectedPart = selectedBlock.data('part'),
 			inputs = blockForm.find('.field-inp');
 
 		$.each(inputs, function(i, input) {
@@ -207,6 +237,13 @@ $(document).ready(function() {
 			}
 			selectedPart.updateField(name, value);
 		});
+
+		if (selectedPart.isSetUp()) {
+			selectedBlock.removeClass('incomplete');
+		} else {
+			selectedBlock.addClass('incomplete');
+		}
+		updateRunBtn();
 
 		if (formFeedback.css('display') == 'none') {
 			formFeedback.slideDown();

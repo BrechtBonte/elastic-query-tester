@@ -40,6 +40,11 @@ function MainQuery()
 		return typeof(_query) != 'undefined';
 	}
 
+	this.canRun = function()
+	{
+		return this.isSetUp() && _query && _query.canRun();
+	}
+
 	this.toJson = function()
 	{
 		var jsonObject = {

@@ -5,8 +5,11 @@ $(document).ready(function() {
 		mainContainer = $('#main-container'),
 		hostForm = $('#host-form'),
 		hostInput = $('#host-input'),
-		indexSelect = $('#index-select');
+		indexSelect = $('#index-select'),
+		typeSelect = $('#type-select'),
+		mappings = {};
 
+	hostInput.focus();
 
 	hostForm.on('submit', function(e) {
 		e.preventDefault();
@@ -23,15 +26,28 @@ $(document).ready(function() {
 						// all is well
 
 						$.ajax({
-							url: hostInput.val() + '/_aliases',
+							url: hostInput.val() + '/_all',
 							method: 'GET',
 							dataType: 'json',
 							success: function(data) {
+
+								$.each(data, function(indexName, indexInfo) {
+									mappings[ indexName ] = [];
+									$.each(indexInfo.mappings, function(typeName) {
+										mappings[ indexName ].push(typeName);
+									});
+								});
+
 								indexSelect.empty();
-								$.each(data, function(indexName) {
+								typeSelect.empty();
+
+								$.each(mappings, function(indexName) {
 									indexSelect.append('<option>' + indexName + '</option>');
 								});
+								indexSelect.trigger('change');
+
 								indexSelect.show();
+								typeSelect.show();
 								mainNav.show();
 								mainContainer.show();
 							}
@@ -44,6 +60,17 @@ $(document).ready(function() {
 				}
 			};
 			http.send();
+		}
+	});
+
+	indexSelect.on('change', function() {
+		var types = mappings[ indexSelect.val() ];
+
+		typeSelect.empty();
+		if (typeof(types) != 'undefined') {
+			$.each(types, function(i, type) {
+				typeSelect.append('<option>' + type + '</option>');
+			});
 		}
 	});
 });

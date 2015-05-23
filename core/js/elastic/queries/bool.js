@@ -137,6 +137,38 @@ function BoolQuery()
 		return _must.length || _mustNot.length || _should.length;
 	}
 
+	this.canRun = function()
+	{
+		var allOk = this.isSetUp();
+
+		if (allOk) {
+			$.each(_must, function(i, query) {
+				if (!query.canRun()) {
+					allOk = false;
+					return false;
+				}
+			});
+		}
+		if (allOk) {
+			$.each(_mustNot, function(i, query) {
+				if (!query.canRun()) {
+					allOk = false;
+					return false;
+				}
+			});
+		}
+		if (allOk) {
+			$.each(_should, function(i, query) {
+				if (!query.canRun()) {
+					allOk = false;
+					return false;
+				}
+			});
+		}
+
+		return allOk;
+	}
+
 	this.toJson = function()
 	{
 		var jsonObject = {
@@ -184,6 +216,6 @@ function BoolQuery()
 			jsonObject.bool.boost = _boost;
 		}
 
-		return JSON.stringify( jsonObject );
+		return JSON.stringify(jsonObject);
 	}
 }

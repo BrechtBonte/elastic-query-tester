@@ -97,6 +97,11 @@ function RangeQuery()
 				(typeof(_lower) != 'undefined' || typeof(_upper) != 'undefined');
 	}
 
+	this.canRun = function()
+	{
+		return this.isSetUp();
+	}
+
 	this.toJson = function()
 	{
 		var jsonObject = {
@@ -125,6 +130,6 @@ function RangeQuery()
 			jsonObject.range[ _fieldName ]['boost'] = _boost;
 		}
 
-		return JSON.stringify( jsonObject );
+		return JSON.stringify(jsonObject);
 	}
 }
