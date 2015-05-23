@@ -216,6 +216,6 @@ function BoolQuery()
 			jsonObject.bool.boost = _boost;
 		}
 
-		return JSON.stringify(jsonObject);
+		return jsonObject;
 	}
 }

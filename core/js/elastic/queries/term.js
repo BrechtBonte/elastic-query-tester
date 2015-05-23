@@ -78,6 +78,6 @@ function TermQuery()
 			jsonObject.term[ _fieldName ] = _value;
 		}
 
-		return JSON.stringify(jsonObject);
+		return jsonObject;
 	}
 }

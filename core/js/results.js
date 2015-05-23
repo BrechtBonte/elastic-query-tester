@@ -4,7 +4,12 @@ $(document).ready(function() {
 	var runBtn = $('#run-btn'),
 		hostInput = $('#host-input'),
 		indexSelect = $('#index-select'),
-		typeSelect = $('#type-select');
+		typeSelect = $('#type-select'),
+		resultModal = $('#result-modal');
+
+	var activevTabLink = resultModal.find('.nav-tabs .active a'),
+		requestPre = $('#query-request pre'),
+		responsePre = $('#query-response pre');
 
 	runBtn.on('click', function(e) {
 		e.preventDefault();
@@ -17,7 +22,12 @@ $(document).ready(function() {
 		http.open("GET", url);
 		http.onreadystatechange = function() {
 			if (this.readyState == this.DONE) {
-				console.log(http.responseText);
+
+				requestPre.html(query);
+				responsePre.html(http.responseText);
+				activevTabLink.tab('show');
+
+				resultModal.modal('show');
 			}
 		};
 		http.send(query);

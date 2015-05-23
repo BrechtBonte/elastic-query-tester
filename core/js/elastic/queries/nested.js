@@ -88,6 +88,6 @@ function NestedQuery()
 			}
 		};
 
-		return JSON.stringify(jsonObject);
+		return jsonObject;
 	}
 }

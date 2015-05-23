@@ -130,6 +130,6 @@ function RangeQuery()
 			jsonObject.range[ _fieldName ]['boost'] = _boost;
 		}
 
-		return JSON.stringify(jsonObject);
+		return jsonObject;
 	}
 }

@@ -81,6 +81,45 @@
 		</div>
 	</div>
 
+	<!-- Modal -->
+	<div class="modal fade" id="result-modal" tabindex="-1" role="dialog" aria-labelledby="resultModalLabel" aria-hidden="true">
+		<div class="modal-dialog  modal-lg">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+					<h4 class="modal-title" id="resultModalLabel">Query results</h4>
+				</div>
+				<div class="modal-body">
+					<div role="tabpanel">
+						<ul class="nav nav-tabs" role="tablist">
+							<li role="presentation"><a href="#query-request" aria-controls="query-request" role="tab" data-toggle="tab">Request</a></li>
+							<li role="presentation" class="active"><a href="#query-response" aria-controls="query-response" role="tab" data-toggle="tab">Response</a></li>
+						</ul>
+
+						<div class="tab-content">
+							<div role="tabpanel" class="tab-pane" id="query-request">
+								<div class="row">
+									<div class="col-md-12">
+										<pre></pre>
+									</div>
+								</div>
+							</div>
+							<div role="tabpanel" class="tab-pane active" id="query-response">
+								<div class="row">
+									<div class="col-md-12">
+										<pre></pre>
+									</div>
+								</div>
+							</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
 
 
 	<script src="core/js/libs/jquery-1.11.3.min.js"></script>
