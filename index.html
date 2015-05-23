@@ -15,14 +15,15 @@
 				<div class="navbar-header">
 					<form id="host-form" class="navbar-form">
 						<div class="form-group">
-							<input id="host-input" type="text" name="host" class="form-control" placeholder="http://localhost:9200">
-							/
-							<input id="index-input" type="text" name="index" class="form-control" placeholder="index">
+							<input id="host-input" type="text" name="host" class="form-control" value="http://localhost:9200">
 						</div>
 						<button type="submit" class="btn btn-default">Continue</button>
 					</form>
 				</div>
-				<ul class="nav navbar-nav navbar-right">
+				<div class="form-inline nav navbar-nav navbar-form">
+					<select id="index-select" class="form-control" style="display:none"></select>
+				</div>
+				<ul id="main-nav" class="nav navbar-nav navbar-right" style="display:none">
 					<li class="active"><a id="query-tab-header " href="#">Querry</a></li>
 					<li class="disabled"><a id="result-tab-header" href="#">Result</a></li>
 				</ul>
@@ -30,7 +31,7 @@
 		</nav>
 	</header>
 
-	<div class="row">
+	<div id="main-container" class="row" style="display:none">
 		<div class="col-md-12">
 			<section id="query-tab">
 
@@ -99,5 +100,7 @@
 	<script src="core/js/elastic/queries/range.js"></script>
 	<script src="core/js/elastic/queries/term.js"></script>
 	<script src="core/js/query-building.js"></script>
+
+	<script src="core/js/main.js"></script>
 </body>
 </html>
