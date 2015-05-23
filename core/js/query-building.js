@@ -34,7 +34,6 @@ $(document).ready(function() {
 	var infoTitle = $('#info-title'),
 		formContainer = $('#form-container'),
 		formFieldsContainer = $('#fields-container'),
-		blockForm = formFieldsContainer.closest('form'),
 		infoBlock = $('#info-block'),
 		infoTextContainer = $('#info-text-container'),
 		urlBlock = $('#url-block'),
@@ -61,6 +60,36 @@ $(document).ready(function() {
 		}
 
 		if (info.form) {
+			formFieldsContainer.empty();
+			$.each(info.form, function (name, field) {
+				var fieldHtml = '';
+				var value = typeof(field.value) == 'undefined' ? '' : field.value;
+
+				switch(field.type) {
+					case 'text':
+						fieldHtml = '<input type="text" class="form-control field-inp" id="'+name+'-inp" placeholder="'+name+'" value="'+value+'" name="'+name+'" />';
+						break;
+					case 'bool':
+						fieldHtml = '<div class="checkbox"><label><input type="checkbox" class="field-inp checkbox-inp" name="'+name+'"'+(value ? ' checked="checked"' : '')+' /></label></div>'
+						break;
+					case 'dropdown':
+						fieldHtml = '<select class="form-control field-inp">';
+						$.each(field.options, function(i, option) {
+							fieldHtml += '<option'+(value == option ? ' selected="selected"' : '')+'>' + option + '</option>';
+						});
+						fieldHtml += '</select>';
+						break;
+				}
+				var label = name;
+				if (field.required) {
+					label += ' *';
+				}
+
+				formFieldsContainer.append('<div class="form-group">');
+				formFieldsContainer.append('<label for="'+name+'-inp" class="control-label">'+label+'</label>');
+				formFieldsContainer.append(fieldHtml);
+				formFieldsContainer.append('</div>');
+			});
 			formContainer.show();
 		} else {
 			formContainer.hide();
@@ -93,7 +122,7 @@ $(document).ready(function() {
 		var part = new partConstructor();
 
 		var block = $('<div>').addClass('query-block');
-		block.append('<h2>' + className + '<button class="close" type="button">×</button></h2>');
+		block.append('<h2>' + part.getInfo().name + '<button class="close" type="button">×</button></h2>');
 
 		if (!$.isEmptyObject(part.getNestings())) {
 			$.each(part.getNestings(), function(name, info) {
@@ -156,4 +185,31 @@ $(document).ready(function() {
 		selectBlock(parentBlock);
 	});
 
+
+	// handle form submit
+	var blockForm = formFieldsContainer.closest('form'),
+		formFeedback = $('#form-feedback');
+	blockForm.on('submit', function(e) {
+		e.preventDefault();
+
+		var selectedPart = mainQueryBlock.find('.query-block.selected').data('part'),
+			inputs = blockForm.find('.field-inp');
+
+		$.each(inputs, function(i, input) {
+
+			var input = $(input),
+				name = input.attr('name'),
+				value = input.val() === '' ? undefined : input.val();
+
+			if (input.is('.checkbox-inp')) {
+				vaule = input.is(':checked');
+			}
+			selectedPart.updateField(name, value);
+		});
+
+		if (formFeedback.css('display') == 'none') {
+			formFeedback.slideDown();
+		}
+		formFeedback.delay(1000).slideUp();
+	});
 });

@@ -17,9 +17,9 @@ function NestedQuery()
 					'required': true,
 					'value': _path
 				},
-				'scoreMode': {
+				'score mode': {
 					'type': 'dropdown',
-					'choices': ['avg', 'sum', 'max', 'none'],
+					'options': ['avg', 'sum', 'max', 'none'],
 					'required': true,
 					'value': _scoreMode
 				}
@@ -27,25 +27,16 @@ function NestedQuery()
 		};
 	}
 
-	this.getPath = function()
+	this.updateField = function(name, value)
 	{
-		return _path;
-	}
-
-	this.setPath = function(path)
-	{
-		_path = path;
-	}
-
-	this.getScoreMode = function()
-	{
-		return _scoreMode;
-	}
-
-	this.setScoreMode = function(scoreMode)
-	{
-		// avg, sum, max, none
-		_scoreMode = scoreMode;
+		switch(name) {
+			case 'path':
+				_path = value;
+				break;
+			case 'score mode':
+				_scoreMode = value;
+				break;
+		}
 	}
 
 	this.addNesting = function(name, part)

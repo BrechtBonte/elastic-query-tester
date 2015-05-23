@@ -13,7 +13,7 @@ function TermQuery()
 			'text': 'The term query allows you to query terms',
 			'url': 'https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-term-query.html',
 			'form': {
-				'fieldName': {
+				'field name': {
 					'type': 'text',
 					'required': true,
 					'value': _fieldName
@@ -32,34 +32,19 @@ function TermQuery()
 		};
 	}
 
-	this.getFieldName = function()
+	this.updateField = function(name, value)
 	{
-		return _fieldName;
-	}
-
-	this.setFieldName = function(fieldName)
-	{
-		_fieldName = fieldName;
-	}
-
-	this.getValue = function()
-	{
-		return _value;
-	}
-
-	this.setValue = function(value)
-	{
-		_value = value;
-	}
-
-	this.getBoost = function()
-	{
-		return _boost;
-	}
-
-	this.setBoost = function(boost)
-	{
-		_boost = boost;
+		switch(name) {
+			case 'field name':
+				_fieldName = value;
+				break;
+			case 'value':
+				_value = value;
+				break;
+			case 'boost':
+				_boost = value;
+				break;
+		}
 	}
 
 	this.getNestings = function()

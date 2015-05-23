@@ -14,7 +14,7 @@ function BoolQuery()
 			'text': 'The bool query is used to apply multiple queries',
 			'url': 'https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-bool-query.html',
 			'form': {
-				'minimumMatches': {
+				'minimum matches': {
 					'type': 'text',
 					'required': false,
 					'value': _minimumMatches
@@ -26,6 +26,18 @@ function BoolQuery()
 				}
 			}
 		};
+	}
+
+	this.updateField = function(name, value)
+	{
+		switch(name) {
+			case 'minimum matches':
+				_minimumMatches = value;
+				break;
+			case 'boost':
+				_boost = value;
+				break;
+		}
 	}
 
 	this.addMust = function(query)

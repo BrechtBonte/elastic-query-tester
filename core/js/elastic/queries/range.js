@@ -16,30 +16,30 @@ function RangeQuery()
 			'text': 'The range query is used to query ranges..',
 			'url': 'https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-range-query.html',
 			'form': {
-				'fieldName': {
+				'field name': {
 					'type': 'text',
 					'required': true,
 					'value': _fieldName
 				},
-				'lowerLimit': {
+				'lower limit': {
 					'type': 'text',
 					'required': false,
 					'value': _lower
 				},
-				'includeLowerLimit': {
+				'include lower limit': {
 					'type': 'bool',
 					'value': _lowerInclude
 				},
-				'upperLimit': {
+				'upper limit': {
 					'type': 'text',
 					'required': false,
 					'value': _upper
 				},
-				'includeUpperLimit': {
+				'include upper limit': {
 					'type': 'bool',
 					'value': _upperInclude
 				},
-				'timeZone': {
+				'time zone': {
 					'type': 'text',
 					'required': false,
 					'note': 'only use this when querying date fields',
@@ -54,67 +54,31 @@ function RangeQuery()
 		};
 	}
 
-	this.getFieldName = function()
+	this.updateField = function(name, value)
 	{
-		return _fieldName;
-	}
-
-	this.setFieldName = function(fieldName)
-	{
-		_fieldName = fieldName;
-	}
-
-	this.getLowerLimit = function()
-	{
-		return _lower;
-	}
-
-	this.includesLowerLimit = function()
-	{
-		return _lowerInclude;
-	}
-
-	this.setLowerLimit = function(lower, include)
-	{
-		_lower = lower;
-		_lowerInclude = include;
-	}
-
-	this.getUpperLimit = function()
-	{
-		return _upper;
-	}
-
-	this.includesUpperLimit = function()
-	{
-		return _upperInclude;
-	}
-
-	this.setUpperLimit = function(upper, include)
-	{
-		_upper = upper;
-		_upperInclude = include;
-	}
-
-	this.getTimeZone = function()
-	{
-		return _timeZone;
-	}
-
-	this.setTimeZone = function(timeZone)
-	{
-		// Only when using date fields
-		_timeZone = timeZone;
-	}
-
-	this.getBoost = function()
-	{
-		return _boost;
-	}
-
-	this.setBoost = function(boost)
-	{
-		_boost = boost;
+		switch(name) {
+			case 'field name':
+				_fieldName = value;
+				break;
+			case 'lower limit':
+				_lower = value;
+				break;
+			case 'include lower limit':
+				_lowerInclude = value;
+				break;
+			case 'upper limit':
+				_upper = value;
+				break;
+			case 'include upper limit':
+				_upperInclude = value;
+				break;
+			case 'time zone':
+				_timeZone = value;
+				break;
+			case 'boost':
+				_boost = value;
+				break;
+		}
 	}
 
 	this.getNestings = function()
