@@ -16,16 +16,6 @@ function NestedQuery()
 		_path = path;
 	}
 
-	this.getQuery = function()
-	{
-		return _query;
-	}
-
-	this.setQuery = function(query)
-	{
-		_query = query;
-	}
-
 	this.getScoreMode = function()
 	{
 		return _scoreMode;
@@ -35,6 +25,30 @@ function NestedQuery()
 	{
 		// avg, sum, max, none
 		_scoreMode = scoreMode;
+	}
+
+	this.addNesting = function(name, part)
+	{
+		if (name == 'query') {
+			_query = part;
+		}
+	}
+
+	this.removeNesting = function(name, part)
+	{
+		if (name == 'query' && part == _query) {
+			_query = null;
+		}
+	}
+
+	this.getNestings = function()
+	{
+		return {
+			'query': {
+				'type': 'query',
+				'multiple': false
+			}
+		};
 	}
 
 	this.isSetUp = function()
@@ -48,7 +62,7 @@ function NestedQuery()
 			"nested": {
 				"path": _path,
 				"score_mode": _scoreMode,
-				"query": _query.toJson();
+				"query": _query.toJson()
 			}
 		};
 		return JSON.stringify(jsonObject);

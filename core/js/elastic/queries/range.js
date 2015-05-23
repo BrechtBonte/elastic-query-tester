@@ -73,6 +73,11 @@ function RangeQuery()
 		_boost = boost;
 	}
 
+	this.getNestings = function()
+	{
+		return {};
+	}
+
 	this.isSetUp = function()
 	{
 		return _fieldName &&

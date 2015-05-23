@@ -1,0 +1,11 @@
+/* Custom Styles */
+.query-block {
+	padding: 15px;
+	border: 1px solid black;
+	cursor: pointer;
+	margin-bottom: 10px;
+}
+
+.query-block.query {
+	background-color: yellow;
+}

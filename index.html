@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>Elastic Query Tester</title>
+	<meta charset="UTF-8">
+
+	<link rel="stylesheet" href="core/css/bootstrap.min.css">
+	<link rel="stylesheet" href="core/css/bootstrap-theme.min.css">
+	<link rel="stylesheet" href="core/css/styles.css">
+</head>
+<body>
+	<header>
+		<nav class="navbar navbar-default">
+			<div class="container-fluid">
+				<div class="navbar-header">
+					<form id="host-form" class="navbar-form">
+						<div class="form-group">
+							<input id="host-input" type="text" name="host" class="form-control" placeholder="http://localhost:9200">
+							/
+							<input id="index-input" type="text" name="index" class="form-control" placeholder="index">
+						</div>
+						<button type="submit" class="btn btn-default">Continue</button>
+					</form>
+				</div>
+				<ul class="nav navbar-nav navbar-right">
+					<li class="active"><a id="query-tab-header " href="#">Querry</a></li>
+					<li class="disabled"><a id="result-tab-header" href="#">Result</a></li>
+				</ul>
+			</div>
+		</nav>
+	</header>
+
+	<div class="row">
+		<div class="col-md-12">
+			<section id="query-tab">
+
+				<div class="row">
+
+					<div class="col-md-8">
+						<div id="main-query" class="query-block">
+							<h2>Query Builder</h2>
+
+							<div class="nesting form-inline">
+
+								<p class="nesting-name">query</p>
+
+								<select class="nesting-select form-control" data-type="query" data-name="query" data-multiple="false">
+									<option value="">add a query</option>
+								</select>
+							</div>
+						</div>
+					</div>
+
+					<div class="col-md-4">
+						<div class="panel panel-default">
+							<div class="panel-heading">
+								<h3 id="form-title" class="panel-title">Query</h3>
+							</div>
+							<div class="panel-body">
+
+								<form id="block-form">
+
+								</form>
+
+							</div>
+						</div>
+					</div>
+
+				</div>
+
+			</section>
+
+			<section id="result-tab" style="display:none">
+
+			</section>
+		</div>
+	</div>
+
+
+
+	<script src="core/js/libs/jquery-1.11.3.min.js"></script>
+	<script src="core/js/libs/bootstrap.min.js"></script>
+
+	<script src="core/js/elastic/main-query.js"></script>
+	<script src="core/js/elastic/queries/bool.js"></script>
+	<script src="core/js/elastic/queries/nested.js"></script>
+	<script src="core/js/elastic/queries/range.js"></script>
+	<script src="core/js/elastic/queries/term.js"></script>
+	<script src="core/js/query-building.js"></script>
+</body>
+</html>

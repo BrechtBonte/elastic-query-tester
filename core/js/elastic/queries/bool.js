@@ -8,11 +8,6 @@ function BoolQuery()
 		_minimumMatches,
 		_boost;
 
-	this.getMust = function()
-	{
-		return _must;
-	}
-
 	this.addMust = function(query)
 	{
 		_must.push(query);
@@ -24,11 +19,6 @@ function BoolQuery()
 		if (index > -1) {
 			_must.splice(index, 1);
 		}
-	}
-
-	this.getMustNot = function()
-	{
-		return _mustNot;
 	}
 
 	this.addMustNot = function(query)
@@ -44,11 +34,6 @@ function BoolQuery()
 		}
 	}
 
-	this.getShould = function()
-	{
-		return _should;
-	}
-
 	this.addShould = function(query)
 	{
 		_should.push(query);
@@ -60,6 +45,54 @@ function BoolQuery()
 		if (index > -1) {
 			_should.splice(index, 1);
 		}
+	}
+
+	this.addNesting = function(name, part)
+	{
+		switch(name) {
+			case 'must':
+				this.addMust(part);
+				break;
+			case 'mustNot':
+				this.addMustNot(part);
+				break;
+			case 'should':
+				this.addShould(part);
+				break;
+		}
+	}
+
+	this.removeNesting = function(name, part)
+	{
+		switch(name) {
+			case 'must':
+				this.removeMust(part);
+				break;
+			case 'mustNot':
+				this.removeMustNot(part);
+				break;
+			case 'should':
+				this.removeShould(part);
+				break;
+		}
+	}
+
+	this.getNestings = function()
+	{
+		return {
+			'must': {
+				'type': 'query',
+				'multiple': true
+			},
+			'mustNot': {
+				'type': 'query',
+				'multiple': true
+			},
+			'should': {
+				'type': 'query',
+				'multiple': true
+			}
+		};
 	}
 
 	this.isSetUp = function()
