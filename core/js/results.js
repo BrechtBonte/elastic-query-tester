@@ -14,7 +14,7 @@ $(document).ready(function() {
 	var prettyPrint = function(json)
 	{
 		var obj = JSON.parse(json);
-		return JSON.stringify(obj, null, ' ');
+		return JSON.stringify(obj, null, "  ");
 	}
 
 	runBtn.on('click', function(e) {

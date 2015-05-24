@@ -1,14 +1,31 @@
 // Main query
 function MainQuery()
 {
-	var _query;
+	var _query,
+		_size = 10;
 
 	this.getInfo = function()
 	{
 		return {
 			'name': 'Main Query',
-			'text': 'This is the main query, it all starts from here'
+			'text': 'This is the main query, it all starts from here',
+			'form': {
+				'result limit': {
+					'type': 'text',
+					'required': true,
+					'value': _size
+				}
+			}
 		};
+	}
+
+	this.updateField = function(name, value)
+	{
+		switch(name) {
+			case 'result limit':
+				_size = value;
+				break;
+		}
 	}
 
 	this.addNesting = function(name, part)
@@ -37,7 +54,7 @@ function MainQuery()
 
 	this.isSetUp = function()
 	{
-		return typeof(_query) != 'undefined';
+		return typeof(_query) != 'undefined' && typeof(_size) != 'undefined';
 	}
 
 	this.canRun = function()
@@ -48,6 +65,7 @@ function MainQuery()
 	this.toJson = function()
 	{
 		var jsonObject = {
+			"size": _size,
 			"query": _query.toJson()
 		};
 

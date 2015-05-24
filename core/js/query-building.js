@@ -222,7 +222,7 @@ $(document).ready(function() {
 	blockForm.on('submit', function(e) {
 		e.preventDefault();
 
-		var selectedBlock = mainQueryBlock.find('.query-block.selected'),
+		var selectedBlock = $('.query-block.selected'),
 			selectedPart = selectedBlock.data('part'),
 			inputs = blockForm.find('.field-inp');
 
