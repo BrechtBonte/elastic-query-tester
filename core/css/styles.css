@@ -17,3 +17,9 @@
 .query-block.selected {
 	border-color: blue;
 }
+
+pre {
+	overflow: auto;
+	word-wrap: normal;
+	white-space: pre;
+}

@@ -11,6 +11,12 @@ $(document).ready(function() {
 		requestPre = $('#query-request pre'),
 		responsePre = $('#query-response pre');
 
+	var prettyPrint = function(json)
+	{
+		var obj = JSON.parse(json);
+		return JSON.stringify(obj, null, ' ');
+	}
+
 	runBtn.on('click', function(e) {
 		e.preventDefault();
 		e.stopPropagation();
@@ -23,8 +29,8 @@ $(document).ready(function() {
 		http.onreadystatechange = function() {
 			if (this.readyState == this.DONE) {
 
-				requestPre.html(query);
-				responsePre.html(http.responseText);
+				requestPre.html(prettyPrint(query));
+				responsePre.html(prettyPrint(http.responseText));
 				activevTabLink.tab('show');
 
 				resultModal.modal('show');
