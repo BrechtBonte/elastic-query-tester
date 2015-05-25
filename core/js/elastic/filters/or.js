@@ -27,6 +27,23 @@ function OrFilter()
 		};
 	}
 
+	this.addNesting = function(name, part)
+	{
+		if (name == 'filters') {
+			_filters.push(part);
+		}
+	}
+
+	this.removeNesting = function(name, part)
+	{
+		if (name == 'filters') {
+			var index = _filters.indexOf(part);
+			if (index > -1) {
+				_filters.splice(index, 1);
+			}
+		}
+	}
+
 	this.isSetUp = function()
 	{
 		return _filters.length > 0;

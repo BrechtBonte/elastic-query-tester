@@ -18,6 +18,21 @@ $(document).ready(function() {
 			'Or': 'OrFilter',
 			'Range': 'RangeFilter',
 			'Term': 'TermFilter'
+		},
+		'aggregation': {
+			'Avg': 'AvgAggregation',
+			'Filter': 'FilterAggregation',
+			'Filters': 'FiltersAggregation',
+			'Global': 'GlobalAggregation',
+			'Max': 'MaxAggregation',
+			'Min': 'MinAggregation',
+			'Missing': 'MissingAggregation',
+			'Nested': 'NestedAggregation',
+			'Reverse Nested': 'ReverseNestedAggregation',
+			'Stats': 'StatsAggregation',
+			'Sum': 'SumAggregation',
+			'Terms': 'TermsAggregation',
+			'Value Count': 'ValueCountAggregation'
 		}
 	}
 

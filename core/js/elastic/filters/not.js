@@ -27,6 +27,20 @@ function NotFilter()
 		};
 	}
 
+	this.addNesting = function(name, part)
+	{
+		if (name == 'filter') {;
+			_filter = part
+		}
+	}
+
+	this.removeNesting = function(name, part)
+	{
+		if (name == 'filters' && _filter == part) {
+			_filter = null;
+		}
+	}
+
 	this.isSetUp = function()
 	{
 		return typeof(_filter) != 'undefined';
