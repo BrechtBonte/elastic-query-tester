@@ -25,7 +25,7 @@ $(document).ready(function() {
 			url = hostInput.val() + '/' + indexSelect.val() + '/' + typeSelect.val() + '/_search';
 
 		var http = new XMLHttpRequest();
-		http.open("GET", url);
+		http.open("POST", url);
 		http.onreadystatechange = function() {
 			if (this.readyState == this.DONE) {
 

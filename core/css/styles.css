@@ -9,6 +9,9 @@
 .query-block.type-query {
 	background-color: #FFFFE8;
 }
+.query-block.type-filter {
+	background-color: #E6F0FF;
+}
 
 .query-block.incomplete {
 	border-color: red;

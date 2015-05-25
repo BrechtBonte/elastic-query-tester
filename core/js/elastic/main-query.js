@@ -2,6 +2,7 @@
 function MainQuery()
 {
 	var _query,
+		_filter,
 		_size = 10;
 
 	this.getInfo = function()
@@ -30,15 +31,25 @@ function MainQuery()
 
 	this.addNesting = function(name, part)
 	{
-		if (name == 'query') {
-			_query = part;
+		switch (name) {
+			case 'query':
+				_query = part;
+				break;
+			case 'filter':
+				_filter = part;
+				break;
 		}
 	}
 
 	this.removeNesting = function(name, part)
 	{
-		if (name == 'query' && part == _query) {
-			_query = null;
+		switch (name) {
+			case 'query':
+				if (part == _query) _query = null;
+				break;
+			case 'filter':
+				if (part == _filter) _filter = null;
+				break;
 		}
 	}
 
@@ -47,6 +58,10 @@ function MainQuery()
 		return {
 			'query': {
 				'type': 'query',
+				'multiple': false
+			},
+			'filter': {
+				'type': 'filter',
 				'multiple': false
 			}
 		};
@@ -65,9 +80,18 @@ function MainQuery()
 	this.toJson = function()
 	{
 		var jsonObject = {
+			"from": 0,
 			"size": _size,
 			"query": _query.toJson()
 		};
+		if (_filter) {
+			jsonObject.query = {
+				"filtered": {
+					"query": _query.toJson(),
+					"filter": _filter.toJson()
+				}
+			};
+		}
 
 		return JSON.stringify(jsonObject);
 	}

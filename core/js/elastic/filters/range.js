@@ -1,5 +1,5 @@
-// Range query
-function RangeQuery()
+// Range Filter
+function RangeFilter()
 {
 	var _fieldName,
 		_lower,
@@ -7,19 +7,20 @@ function RangeQuery()
 		_upper,
 		_upperInclude,
 		_timeZone,
-		_boost;
+		_format,
+		_execution = 'index';
 
 	this.getType = function()
 	{
-		return 'query';
+		return 'filter';
 	}
 
 	this.getInfo = function()
 	{
 		return {
-			'name': 'Range Query',
-			'text': 'The range query is used to query ranges..',
-			'url': 'https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-range-query.html',
+			'name': 'Range Filter',
+			'text': 'The range filter is used to filter ranges..',
+			'url': 'https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-range-filter.html',
 			'form': {
 				'field name': {
 					'type': 'text',
@@ -50,10 +51,16 @@ function RangeQuery()
 					'note': 'only use this when querying date fields',
 					'value': _timeZone
 				},
-				'boost': {
+				'format': {
 					'type': 'text',
 					'required': false,
 					'value': _boost
+				},
+				'execution': {
+					'type': 'dropdown',
+					'options': ['index', 'fielddata'],
+					'required': false,
+					'value': _scoreMode
 				}
 			}
 		};
@@ -80,8 +87,11 @@ function RangeQuery()
 			case 'time zone':
 				_timeZone = value;
 				break;
-			case 'boost':
-				_boost = value;
+			case 'format':
+				_format = value;
+				break;
+			case 'execution':
+				_execution = value;
 				break;
 		}
 	}
@@ -125,8 +135,12 @@ function RangeQuery()
 			jsonObject.range[ _fieldName ]['time_zone'] = _timeZone;
 		}
 
-		if (_boost) {
-			jsonObject.range[ _fieldName ]['boost'] = _boost;
+		if (_format) {
+			jsonObject.range[ _fieldName ]['format'] = _format;
+		}
+
+		if (_execution) {
+			jsonObject.range[ _fieldName ]['execution'] = _execution;
 		}
 
 		return jsonObject;

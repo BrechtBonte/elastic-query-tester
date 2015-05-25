@@ -6,7 +6,18 @@ $(document).ready(function() {
 			'Bool': 'BoolQuery',
 			'Nested': 'NestedQuery',
 			'Range': 'RangeQuery',
-			'Term': 'TermQuery'
+			'Term': 'TermQuery',
+			'Match All': 'MatchAllQuery'
+		},
+		'filter': {
+			'And': 'AndFilter',
+			'Exists': 'ExistsFilter',
+			'Missing': 'MissingFilter',
+			'Nested': 'NestedFilter',
+			'Not': 'NotFilter',
+			'Or': 'OrFilter',
+			'Range': 'RangeFilter',
+			'Term': 'TermFilter'
 		}
 	}
 
@@ -40,6 +51,44 @@ $(document).ready(function() {
 	}
 	$.each($('.nesting-select'), function() {
 		initSelect($(this));
+	});
+
+
+	// handle form submit
+	var formFieldsContainer = $('#fields-container'),
+		blockForm = formFieldsContainer.closest('form'),
+		formFeedback = $('#form-feedback');
+
+	blockForm.on('submit', function(e) {
+		e.preventDefault();
+
+		var selectedBlock = $('.query-block.selected'),
+			selectedPart = selectedBlock.data('part'),
+			inputs = blockForm.find('.field-inp');
+
+		$.each(inputs, function(i, input) {
+
+			var input = $(input),
+				name = input.attr('name'),
+				value = input.val() === '' ? undefined : input.val();
+
+			if (input.is('.checkbox-inp')) {
+				vaule = input.is(':checked');
+			}
+			selectedPart.updateField(name, value);
+		});
+
+		if (selectedPart.isSetUp()) {
+			selectedBlock.removeClass('incomplete');
+		} else {
+			selectedBlock.addClass('incomplete');
+		}
+		updateRunBtn();
+
+		if (formFeedback.css('display') == 'none') {
+			formFeedback.slideDown();
+		}
+		formFeedback.delay(1000).slideUp();
 	});
 
 
@@ -112,6 +161,7 @@ $(document).ready(function() {
 	var selectBlock = function(block)
 	{
 		var part = block.data('part');
+		formFeedback.hide();
 
 		$('.query-block').removeClass('selected');
 		block.addClass('selected');
@@ -212,42 +262,5 @@ $(document).ready(function() {
 		updateRunBtn();
 		nestingSelect.show();
 		selectBlock(parentBlock);
-	});
-
-
-	// handle form submit
-	var blockForm = formFieldsContainer.closest('form'),
-		formFeedback = $('#form-feedback');
-
-	blockForm.on('submit', function(e) {
-		e.preventDefault();
-
-		var selectedBlock = $('.query-block.selected'),
-			selectedPart = selectedBlock.data('part'),
-			inputs = blockForm.find('.field-inp');
-
-		$.each(inputs, function(i, input) {
-
-			var input = $(input),
-				name = input.attr('name'),
-				value = input.val() === '' ? undefined : input.val();
-
-			if (input.is('.checkbox-inp')) {
-				vaule = input.is(':checked');
-			}
-			selectedPart.updateField(name, value);
-		});
-
-		if (selectedPart.isSetUp()) {
-			selectedBlock.removeClass('incomplete');
-		} else {
-			selectedBlock.addClass('incomplete');
-		}
-		updateRunBtn();
-
-		if (formFeedback.css('display') == 'none') {
-			formFeedback.slideDown();
-		}
-		formFeedback.delay(1000).slideUp();
 	});
 });
