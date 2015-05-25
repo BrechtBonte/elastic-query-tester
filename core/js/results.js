@@ -9,7 +9,8 @@ $(document).ready(function() {
 
 	var activevTabLink = resultModal.find('.nav-tabs .active a'),
 		requestPre = $('#query-request pre'),
-		responsePre = $('#query-response pre');
+		responsePre = $('#query-response pre'),
+		parsedPre = $('#query-parsed pre');
 
 	var prettyPrint = function(json)
 	{
@@ -30,9 +31,11 @@ $(document).ready(function() {
 			if (this.readyState == this.DONE) {
 
 				requestPre.html(prettyPrint(query));
-				responsePre.html(prettyPrint(http.responseText));
-				activevTabLink.tab('show');
+				var parsedResponse = prettyPrint(http.responseText);
+				responsePre.html(parsedResponse);
+				parsedPre.jJsonViewer(parsedResponse);
 
+				activevTabLink.tab('show');
 				resultModal.modal('show');
 			}
 		};

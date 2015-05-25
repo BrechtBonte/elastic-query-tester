@@ -6,6 +6,7 @@
 
 	<link rel="stylesheet" href="core/css/bootstrap.min.css">
 	<link rel="stylesheet" href="core/css/bootstrap-theme.min.css">
+	<link rel="stylesheet" href="core/css/jjsonviewer.css">
 	<link rel="stylesheet" href="core/css/styles.css">
 </head>
 <body>
@@ -55,7 +56,7 @@
 
 							<div class="nesting form-inline">
 								<p class="nesting-name">aggregations</p>
-								<select class="nesting-select form-control" data-type="aggregation" data-name="aggregations" data-multiple="false">
+								<select class="nesting-select form-control" data-type="aggregation" data-name="aggregations" data-multiple="true">
 									<option value="">add an aggregation</option>
 								</select>
 							</div>
@@ -106,6 +107,7 @@
 						<ul class="nav nav-tabs" role="tablist">
 							<li role="presentation"><a href="#query-request" aria-controls="query-request" role="tab" data-toggle="tab">Request</a></li>
 							<li role="presentation" class="active"><a href="#query-response" aria-controls="query-response" role="tab" data-toggle="tab">Response</a></li>
+							<li role="presentation"><a href="#query-parsed" aria-controls="query-parsed" role="tab" data-toggle="tab">Parsed</a></li>
 						</ul>
 
 						<div class="tab-content">
@@ -123,6 +125,13 @@
 									</div>
 								</div>
 							</div>
+							<div role="tabpanel" class="tab-pane" id="query-parsed">
+								<div class="row">
+									<div class="col-md-12">
+										<pre></pre>
+									</div>
+								</div>
+							</div>
 						</div>
 					</div>
 				</div>
@@ -134,6 +143,7 @@
 
 	<script src="core/js/libs/jquery-1.11.3.min.js"></script>
 	<script src="core/js/libs/bootstrap.min.js"></script>
+	<script src="core/js/libs/jjsonviewer.js"></script>
 
 	<script src="core/js/elastic/main-query.js"></script>
 	<script src="core/js/elastic/queries/bool.js"></script>
