@@ -209,7 +209,11 @@ $(document).ready(function() {
 				nestingBlock.append('<p class="nesting-name">' + name + '</p>');
 
 				var nestingSelect = $('<select class="nesting-select form-control">');
-				nestingSelect.append('<option value="">add a ' + info.type + '</option>');
+				var optionText = 'add a';
+				if (['a', 'e', 'i', 'o', 'u'].indexOf(info.type.substring(0,1)) > -1) {
+					optionText += 'n';
+				}
+				nestingSelect.append('<option value="">'+optionText+' ' + info.type + '</option>');
 				nestingSelect.data('type', info.type);
 				nestingSelect.data('name', name);
 				nestingSelect.data('multiple', info.multiple);
