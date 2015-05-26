@@ -31,6 +31,7 @@ Currently present blocks:
 - Or
 - Range
 - Term
+- Prefix
 
 **Aggregations**
 - Avg

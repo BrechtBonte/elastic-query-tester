@@ -17,7 +17,8 @@ $(document).ready(function() {
 			'Not': 'NotFilter',
 			'Or': 'OrFilter',
 			'Range': 'RangeFilter',
-			'Term': 'TermFilter'
+			'Term': 'TermFilter',
+			'Prefix': 'PrefixFilter'
 		},
 		'aggregation': {
 			'Avg': 'AvgAggregation',
