@@ -49,10 +49,10 @@ function MainQuery()
 	{
 		switch (name) {
 			case 'query':
-				if (part == _query) _query = null;
+				if (part == _query) _query = undefined;
 				break;
 			case 'filter':
-				if (part == _filter) _filter = null;
+				if (part == _filter) _filter = undefined;
 				break;
 			case 'aggregations':
 				var index = _aggregations.indexOf(part);

@@ -37,7 +37,7 @@ function NotFilter()
 	this.removeNesting = function(name, part)
 	{
 		if (name == 'filters' && _filter == part) {
-			_filter = null;
+			_filter = undefined;
 		}
 	}
 

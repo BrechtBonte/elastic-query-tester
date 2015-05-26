@@ -62,7 +62,7 @@ function FilterAggregation()
 	this.removeNesting = function(name, part)
 	{
 		if (name == 'filter' && _filter == part) {
-			_filter = null;
+			_filter = undefined;
 		}
 		if (name == 'aggregations') {
 			var index = _aggregations.indexOf(part);

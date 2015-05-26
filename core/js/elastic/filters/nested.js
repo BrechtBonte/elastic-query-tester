@@ -44,7 +44,7 @@ function NestedFilter()
 	this.removeNesting = function(name, part)
 	{
 		if (name == 'filter' && part == _filter) {
-			_filter = null;
+			_filter = undefined;
 		}
 	}
 

@@ -54,7 +54,7 @@ function NestedQuery()
 	this.removeNesting = function(name, part)
 	{
 		if (name == 'query' && part == _query) {
-			_query = null;
+			_query = undefined;
 		}
 	}
 
