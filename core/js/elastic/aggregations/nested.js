@@ -25,7 +25,7 @@ function NestedAggregation()
 				'path': {
 					'type': 'text',
 					'required': true,
-					'value': _fieldName
+					'value': _path
 				}
 			}
 		};
