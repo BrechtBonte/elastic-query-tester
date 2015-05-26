@@ -124,13 +124,9 @@ function MainQuery()
 						"filter": _filter.toJson()
 					}
 				};
-				if (_aggregations.length > 0) {
-					jsonObject.query.filtered.aggregations = aggregationObject;
-				}
-			} else {
-				if (_aggregations.length > 0) {
-					jsonObject.aggregations = aggregationObject;
-				}
+			}
+			if (_aggregations.length > 0) {
+				jsonObject.aggregations = aggregationObject;
 			}
 		} else {
 			jsonObject = {
