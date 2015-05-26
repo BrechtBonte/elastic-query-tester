@@ -12,6 +12,9 @@
 .query-block.type-filter {
 	background-color: #E6F0FF;
 }
+.query-block.type-aggregation {
+	background-color: #F0FFF0;
+}
 
 .query-block.incomplete {
 	border-color: red;
