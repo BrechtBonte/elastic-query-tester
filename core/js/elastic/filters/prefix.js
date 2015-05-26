@@ -62,7 +62,7 @@ function PrefixFilter()
 		var jsonObject = {
 			"prefix": {}
 		};
-		jsonObject.term[ _fieldName ] = _value;
+		jsonObject.prefix[ _fieldName ] = _value;
 
 		return jsonObject;
 	}
