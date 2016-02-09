@@ -35,7 +35,7 @@ $(document).ready(function() {
 			'Terms': 'TermsAggregation',
 			'Value Count': 'ValueCountAggregation'
 		}
-	}
+	};
 
 	var mainQueryBlock = $("#main-query"),
 		runBtn = $('#run-btn');
@@ -53,7 +53,7 @@ $(document).ready(function() {
 			runBtn.addClass('disabled');
 			runBtn.attr('title', 'Query is incomplete, check blocks with red borders');
 		}
-	}
+	};
 	updateRunBtn();
 
 	// inintializing nested selects
@@ -64,7 +64,7 @@ $(document).ready(function() {
 		$.each(blocks[ type ], function(name, className) {
 			select.append('<option value="' + className + '">' + name + '</option>');
 		});
-	}
+	};
 	$.each($('.nesting-select'), function() {
 		initSelect($(this));
 	});
@@ -84,12 +84,12 @@ $(document).ready(function() {
 
 		$.each(inputs, function(i, input) {
 
-			var input = $(input),
-				name = input.attr('name'),
+			input = $(input);
+			var name = input.attr('name'),
 				value = input.val() === '' ? undefined : input.val();
 
 			if (input.is('.checkbox-inp')) {
-				vaule = input.is(':checked');
+				value = input.is(':checked');
 			}
 			selectedPart.updateField(name, value);
 		});
@@ -111,7 +111,6 @@ $(document).ready(function() {
 	// listener for selecting blocks
 	var infoTitle = $('#info-title'),
 		formContainer = $('#form-container'),
-		formFieldsContainer = $('#fields-container'),
 		infoBlock = $('#info-block'),
 		infoTextContainer = $('#info-text-container'),
 		urlBlock = $('#url-block'),
@@ -172,7 +171,7 @@ $(document).ready(function() {
 		} else {
 			formContainer.hide();
 		}
-	}
+	};
 
 	var selectBlock = function(block)
 	{
@@ -183,7 +182,7 @@ $(document).ready(function() {
 		block.addClass('selected');
 
 		loadInfoForPart(part);
-	}
+	};
 
 	$('#query-tab').on('click', '.query-block', function(e) {
 		e.preventDefault();
@@ -230,7 +229,7 @@ $(document).ready(function() {
 		}
 		block.data('part', part);
 		return block;
-	}
+	};
 
 	mainQueryBlock.on('change', '.nesting-select', function() {
 		var select = $(this),

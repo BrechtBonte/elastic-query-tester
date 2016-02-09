@@ -13,7 +13,7 @@ function RangeFilter()
 	this.getType = function()
 	{
 		return 'filter';
-	}
+	};
 
 	this.getInfo = function()
 	{
@@ -64,7 +64,7 @@ function RangeFilter()
 				}
 			}
 		};
-	}
+	};
 
 	this.updateField = function(name, value)
 	{
@@ -94,23 +94,23 @@ function RangeFilter()
 				_execution = value;
 				break;
 		}
-	}
+	};
 
 	this.getNestings = function()
 	{
 		return {};
-	}
+	};
 
 	this.isSetUp = function()
 	{
 		return _fieldName &&
 				(typeof(_lower) != 'undefined' || typeof(_upper) != 'undefined');
-	}
+	};
 
 	this.canRun = function()
 	{
 		return this.isSetUp();
-	}
+	};
 
 	this.toJson = function()
 	{

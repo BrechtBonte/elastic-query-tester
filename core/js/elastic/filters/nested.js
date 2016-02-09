@@ -7,7 +7,7 @@ function NestedFilter()
 	this.getType = function()
 	{
 		return 'filter';
-	}
+	};
 
 	this.getInfo = function()
 	{
@@ -23,7 +23,7 @@ function NestedFilter()
 				}
 			}
 		};
-	}
+	};
 
 	this.updateField = function(name, value)
 	{
@@ -32,21 +32,21 @@ function NestedFilter()
 				_path = value;
 				break;
 		}
-	}
+	};
 
 	this.addNesting = function(name, part)
 	{
 		if (name == 'filter') {
 			_filter = part;
 		}
-	}
+	};
 
 	this.removeNesting = function(name, part)
 	{
 		if (name == 'filter' && part == _filter) {
 			_filter = undefined;
 		}
-	}
+	};
 
 	this.getNestings = function()
 	{
@@ -56,17 +56,17 @@ function NestedFilter()
 				'multiple': false
 			}
 		};
-	}
+	};
 
 	this.isSetUp = function()
 	{
 		return _path && _filter;
-	}
+	};
 
 	this.canRun = function()
 	{
 		return this.isSetUp() && _filter && _filter.canRun();
-	}
+	};
 
 	this.toJson = function()
 	{

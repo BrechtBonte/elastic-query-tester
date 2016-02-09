@@ -10,7 +10,7 @@ function BoolQuery()
 	this.getType = function()
 	{
 		return 'query';
-	}
+	};
 
 	this.getInfo = function()
 	{
@@ -31,7 +31,7 @@ function BoolQuery()
 				}
 			}
 		};
-	}
+	};
 
 	this.updateField = function(name, value)
 	{
@@ -43,12 +43,12 @@ function BoolQuery()
 				_boost = value;
 				break;
 		}
-	}
+	};
 
 	this.addMust = function(query)
 	{
 		_must.push(query);
-	}
+	};
 
 	this.removeMust = function(query)
 	{
@@ -56,12 +56,12 @@ function BoolQuery()
 		if (index > -1) {
 			_must.splice(index, 1);
 		}
-	}
+	};
 
 	this.addMustNot = function(query)
 	{
 		_mustNot.push(query);
-	}
+	};
 
 	this.removeMustNot = function(query)
 	{
@@ -69,12 +69,12 @@ function BoolQuery()
 		if (index > -1) {
 			_mustNot.splice(index, 1);
 		}
-	}
+	};
 
 	this.addShould = function(query)
 	{
 		_should.push(query);
-	}
+	};
 
 	this.removeShould = function(query)
 	{
@@ -82,7 +82,7 @@ function BoolQuery()
 		if (index > -1) {
 			_should.splice(index, 1);
 		}
-	}
+	};
 
 	this.addNesting = function(name, part)
 	{
@@ -97,7 +97,7 @@ function BoolQuery()
 				this.addShould(part);
 				break;
 		}
-	}
+	};
 
 	this.removeNesting = function(name, part)
 	{
@@ -112,7 +112,7 @@ function BoolQuery()
 				this.removeShould(part);
 				break;
 		}
-	}
+	};
 
 	this.getNestings = function()
 	{
@@ -130,12 +130,12 @@ function BoolQuery()
 				'multiple': true
 			}
 		};
-	}
+	};
 
 	this.isSetUp = function()
 	{
 		return _must.length || _mustNot.length || _should.length;
-	}
+	};
 
 	this.canRun = function()
 	{
@@ -167,7 +167,7 @@ function BoolQuery()
 		}
 
 		return allOk;
-	}
+	};
 
 	this.toJson = function()
 	{

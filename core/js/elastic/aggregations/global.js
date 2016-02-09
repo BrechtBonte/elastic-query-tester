@@ -7,7 +7,7 @@ function GlobalAggregation()
 	this.getType = function()
 	{
 		return 'aggregation';
-	}
+	};
 
 	this.getInfo = function()
 	{
@@ -23,7 +23,7 @@ function GlobalAggregation()
 				}
 			}
 		};
-	}
+	};
 
 	this.updateField = function(name, value)
 	{
@@ -32,7 +32,7 @@ function GlobalAggregation()
 				_name = value;
 				break;
 		}
-	}
+	};
 
 	this.getNestings = function()
 	{
@@ -42,14 +42,14 @@ function GlobalAggregation()
 				'multiple': true
 			}
 		};
-	}
+	};
 
 	this.addNesting = function(name, part)
 	{
 		if (name == 'aggregations') {
 			_aggregations.push(part);
 		}
-	}
+	};
 
 	this.removeNesting = function(name, part)
 	{
@@ -59,12 +59,12 @@ function GlobalAggregation()
 				_aggregations.splice(index, 1);
 			}
 		}
-	}
+	};
 
 	this.isSetUp = function()
 	{
 		return typeof(_name) != 'undefined';
-	}
+	};
 
 	this.canRun = function()
 	{
@@ -77,18 +77,18 @@ function GlobalAggregation()
 		}
 
 		return allOk;
-	}
+	};
 
 	this.getName = function()
 	{
 		return _name;
-	}
+	};
 
 	this.toJson = function()
 	{
 		var jsonObject = {
 			"global": {}
-		}
+		};
 
 		if (_aggregations.length > 0) {
 			jsonObject.aggregations = {};

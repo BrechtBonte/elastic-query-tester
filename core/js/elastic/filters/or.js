@@ -6,7 +6,7 @@ function OrFilter()
 	this.getType = function()
 	{
 		return 'filter';
-	}
+	};
 
 	this.getInfo = function()
 	{
@@ -15,7 +15,7 @@ function OrFilter()
 			'text': 'The Or Filter allows you to optionally combine multiple filters',
 			'url': 'https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-or-filter.html'
 		}
-	}
+	};
 
 	this.getNestings = function()
 	{
@@ -25,14 +25,14 @@ function OrFilter()
 				'multiple': true
 			}
 		};
-	}
+	};
 
 	this.addNesting = function(name, part)
 	{
 		if (name == 'filters') {
 			_filters.push(part);
 		}
-	}
+	};
 
 	this.removeNesting = function(name, part)
 	{
@@ -42,12 +42,12 @@ function OrFilter()
 				_filters.splice(index, 1);
 			}
 		}
-	}
+	};
 
 	this.isSetUp = function()
 	{
 		return _filters.length > 0;
-	}
+	};
 
 	this.canRun = function()
 	{
@@ -62,7 +62,7 @@ function OrFilter()
 		}
 
 		return allOk;
-	}
+	};
 
 	this.toJson = function()
 	{

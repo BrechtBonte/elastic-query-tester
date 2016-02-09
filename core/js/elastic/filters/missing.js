@@ -6,7 +6,7 @@ function MissingFilter()
 	this.getType = function()
 	{
 		return 'filter';
-	}
+	};
 
 	this.getInfo = function()
 	{
@@ -22,7 +22,7 @@ function MissingFilter()
 				}
 			}
 		};
-	}
+	};
 
 	this.updateField = function(name, value)
 	{
@@ -31,22 +31,22 @@ function MissingFilter()
 				_fieldName = value;
 				break;
 		}
-	}
+	};
 
 	this.getNestings = function()
 	{
 		return {};
-	}
+	};
 
 	this.isSetUp = function()
 	{
 		return typeof(_fieldName) != 'undefined';
-	}
+	};
 
 	this.canRun = function()
 	{
 		return this.isSetUp;
-	}
+	};
 
 	this.toJson = function()
 	{

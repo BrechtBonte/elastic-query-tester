@@ -12,7 +12,7 @@ function RangeQuery()
 	this.getType = function()
 	{
 		return 'query';
-	}
+	};
 
 	this.getInfo = function()
 	{
@@ -57,7 +57,7 @@ function RangeQuery()
 				}
 			}
 		};
-	}
+	};
 
 	this.updateField = function(name, value)
 	{
@@ -84,23 +84,23 @@ function RangeQuery()
 				_boost = value;
 				break;
 		}
-	}
+	};
 
 	this.getNestings = function()
 	{
 		return {};
-	}
+	};
 
 	this.isSetUp = function()
 	{
 		return _fieldName &&
 				(typeof(_lower) != 'undefined' || typeof(_upper) != 'undefined');
-	}
+	};
 
 	this.canRun = function()
 	{
 		return this.isSetUp();
-	}
+	};
 
 	this.toJson = function()
 	{

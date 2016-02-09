@@ -19,7 +19,7 @@ function MainQuery()
 				}
 			}
 		};
-	}
+	};
 
 	this.updateField = function(name, value)
 	{
@@ -28,7 +28,7 @@ function MainQuery()
 				_size = value;
 				break;
 		}
-	}
+	};
 
 	this.addNesting = function(name, part)
 	{
@@ -43,7 +43,7 @@ function MainQuery()
 				_aggregations.push(part);
 				break;
 		}
-	}
+	};
 
 	this.removeNesting = function(name, part)
 	{
@@ -61,7 +61,7 @@ function MainQuery()
 				}
 				break;
 		}
-	}
+	};
 
 	this.getNestings = function()
 	{
@@ -79,13 +79,13 @@ function MainQuery()
 				'multiple': true
 			}
 		};
-	}
+	};
 
 	this.isSetUp = function()
 	{
 		return  (typeof(_query) != 'undefined' && typeof(_size) != 'undefined') ||
 				(_aggregations.length > 0 && typeof(_filter) == 'undefined');
-	}
+	};
 
 	this.canRun = function()
 	{
@@ -100,7 +100,7 @@ function MainQuery()
 		}
 
 		return allOk;
-	}
+	};
 
 	this.toJson = function()
 	{

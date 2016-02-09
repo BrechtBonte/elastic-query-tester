@@ -8,7 +8,7 @@ function FilterAggregation()
 	this.getType = function()
 	{
 		return 'aggregation';
-	}
+	};
 
 	this.getInfo = function()
 	{
@@ -24,7 +24,7 @@ function FilterAggregation()
 				}
 			}
 		};
-	}
+	};
 
 	this.updateField = function(name, value)
 	{
@@ -33,7 +33,7 @@ function FilterAggregation()
 				_name = value;
 				break;
 		}
-	}
+	};
 
 	this.getNestings = function()
 	{
@@ -47,7 +47,7 @@ function FilterAggregation()
 				'multiple': true
 			}
 		};
-	}
+	};
 
 	this.addNesting = function(name, part)
 	{
@@ -57,7 +57,7 @@ function FilterAggregation()
 		if (name == 'aggregations') {
 			_aggregations.push(part);
 		}
-	}
+	};
 
 	this.removeNesting = function(name, part)
 	{
@@ -70,12 +70,12 @@ function FilterAggregation()
 				_aggregations.splice(index, 1);
 			}
 		}
-	}
+	};
 
 	this.isSetUp = function()
 	{
 		return _name && _filter;
-	}
+	};
 
 	this.canRun = function()
 	{
@@ -88,18 +88,18 @@ function FilterAggregation()
 		}
 
 		return allOk;
-	}
+	};
 
 	this.getName = function()
 	{
 		return _name;
-	}
+	};
 
 	this.toJson = function()
 	{
 		var jsonObject = {
 			"filter": _filter.toJson()
-		}
+		};
 
 		if (_aggregations.length > 0) {
 			jsonObject.aggregations = {};

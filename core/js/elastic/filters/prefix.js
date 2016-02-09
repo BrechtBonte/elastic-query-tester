@@ -7,7 +7,7 @@ function PrefixFilter()
 	this.getType = function()
 	{
 		return 'filter';
-	}
+	};
 
 	this.getInfo = function()
 	{
@@ -28,7 +28,7 @@ function PrefixFilter()
 				}
 			}
 		};
-	}
+	};
 
 	this.updateField = function(name, value)
 	{
@@ -40,22 +40,22 @@ function PrefixFilter()
 				_value = value;
 				break;
 		}
-	}
+	};
 
 	this.getNestings = function()
 	{
 		return {};
-	}
+	};
 
 	this.isSetUp = function()
 	{
 		return _fieldName && _value;
-	}
+	};
 
 	this.canRun = function()
 	{
 		return this.isSetUp();
-	}
+	};
 
 	this.toJson = function()
 	{

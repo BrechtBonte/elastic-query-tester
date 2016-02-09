@@ -16,7 +16,7 @@ $(document).ready(function() {
 	{
 		var obj = JSON.parse(json);
 		return JSON.stringify(obj, null, "  ");
-	}
+	};
 
 	runBtn.on('click', function(e) {
 		e.preventDefault();

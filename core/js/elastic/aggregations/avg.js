@@ -8,7 +8,7 @@ function AvgAggregation()
 	this.getType = function()
 	{
 		return 'aggregation';
-	}
+	};
 
 	this.getInfo = function()
 	{
@@ -29,7 +29,7 @@ function AvgAggregation()
 				}
 			}
 		};
-	}
+	};
 
 	this.updateField = function(name, value)
 	{
@@ -41,7 +41,7 @@ function AvgAggregation()
 				_fieldName = value;
 				break;
 		}
-	}
+	};
 
 	this.getNestings = function()
 	{
@@ -51,14 +51,14 @@ function AvgAggregation()
 				'multiple': true
 			}
 		};
-	}
+	};
 
 	this.addNesting = function(name, part)
 	{
 		if (name == 'aggregations') {
 			_aggregations.push(part);
 		}
-	}
+	};
 
 	this.removeNesting = function(name, part)
 	{
@@ -68,12 +68,12 @@ function AvgAggregation()
 				_aggregations.splice(index, 1);
 			}
 		}
-	}
+	};
 
 	this.isSetUp = function()
 	{
 		return _name && _fieldName;
-	}
+	};
 
 	this.canRun = function()
 	{
@@ -86,12 +86,12 @@ function AvgAggregation()
 		}
 
 		return allOk;
-	}
+	};
 
 	this.getName = function()
 	{
 		return _name;
-	}
+	};
 
 	this.toJson = function()
 	{
@@ -99,7 +99,7 @@ function AvgAggregation()
 			"avg": {
 				"field": _fieldName
 			}
-		}
+		};
 
 		if (_aggregations.length > 0) {
 			jsonObject.aggregations = {};

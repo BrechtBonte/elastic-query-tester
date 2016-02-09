@@ -8,7 +8,7 @@ function NestedAggregation()
 	this.getType = function()
 	{
 		return 'aggregation';
-	}
+	};
 
 	this.getInfo = function()
 	{
@@ -29,7 +29,7 @@ function NestedAggregation()
 				}
 			}
 		};
-	}
+	};
 
 	this.updateField = function(name, value)
 	{
@@ -41,7 +41,7 @@ function NestedAggregation()
 				_path = value;
 				break;
 		}
-	}
+	};
 
 	this.getNestings = function()
 	{
@@ -51,14 +51,14 @@ function NestedAggregation()
 				'multiple': true
 			}
 		};
-	}
+	};
 
 	this.addNesting = function(name, part)
 	{
 		if (name == 'aggregations') {
 			_aggregations.push(part);
 		}
-	}
+	};
 
 	this.removeNesting = function(name, part)
 	{
@@ -68,12 +68,12 @@ function NestedAggregation()
 				_aggregations.splice(index, 1);
 			}
 		}
-	}
+	};
 
 	this.isSetUp = function()
 	{
 		return _name && _path;
-	}
+	};
 
 	this.canRun = function()
 	{
@@ -86,12 +86,12 @@ function NestedAggregation()
 		}
 
 		return allOk;
-	}
+	};
 
 	this.getName = function()
 	{
 		return _name;
-	}
+	};
 
 	this.toJson = function()
 	{
@@ -99,7 +99,7 @@ function NestedAggregation()
 			"nested": {
 				"path": _path
 			}
-		}
+		};
 
 		if (_aggregations.length > 0) {
 			jsonObject.aggregations = {};

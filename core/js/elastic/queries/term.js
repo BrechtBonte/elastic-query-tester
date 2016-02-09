@@ -8,7 +8,7 @@ function TermQuery()
 	this.getType = function()
 	{
 		return 'query';
-	}
+	};
 
 	this.getInfo = function()
 	{
@@ -34,7 +34,7 @@ function TermQuery()
 				}
 			}
 		};
-	}
+	};
 
 	this.updateField = function(name, value)
 	{
@@ -49,22 +49,22 @@ function TermQuery()
 				_boost = value;
 				break;
 		}
-	}
+	};
 
 	this.getNestings = function()
 	{
 		return {};
-	}
+	};
 
 	this.isSetUp = function()
 	{
 		return _fieldName && _value;
-	}
+	};
 
 	this.canRun = function()
 	{
 		return this.isSetUp();
-	}
+	};
 
 	this.toJson = function()
 	{

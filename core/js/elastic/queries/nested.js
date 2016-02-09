@@ -8,7 +8,7 @@ function NestedQuery()
 	this.getType = function()
 	{
 		return 'query';
-	}
+	};
 
 	this.getInfo = function()
 	{
@@ -30,7 +30,7 @@ function NestedQuery()
 				}
 			}
 		};
-	}
+	};
 
 	this.updateField = function(name, value)
 	{
@@ -42,21 +42,21 @@ function NestedQuery()
 				_scoreMode = value;
 				break;
 		}
-	}
+	};
 
 	this.addNesting = function(name, part)
 	{
 		if (name == 'query') {
 			_query = part;
 		}
-	}
+	};
 
 	this.removeNesting = function(name, part)
 	{
 		if (name == 'query' && part == _query) {
 			_query = undefined;
 		}
-	}
+	};
 
 	this.getNestings = function()
 	{
@@ -66,17 +66,17 @@ function NestedQuery()
 				'multiple': false
 			}
 		};
-	}
+	};
 
 	this.isSetUp = function()
 	{
 		return _path && _query;
-	}
+	};
 
 	this.canRun = function()
 	{
 		return this.isSetUp() && _query && _query.canRun();
-	}
+	};
 
 	this.toJson = function()
 	{
