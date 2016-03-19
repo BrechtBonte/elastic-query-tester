@@ -15,7 +15,7 @@ function ValueCountAggregation()
 		return {
 			'name': 'Value Count Aggregation',
 			'text': 'The Value Count Aggregation returns the amount of values for the given field\'s values',
-			'url': 'https://www.elastic.co/guide/en/elasticsearch/reference/1.5/search-aggregations-metrics-valuecount-aggregation.html',
+			'url': 'https://www.elastic.co/guide/en/elasticsearch/reference/current/search-aggregations-metrics-valuecount-aggregation.html',
 			'form': {
 				'name': {
 					'type': 'text',

@@ -15,7 +15,7 @@ function TermsAggregation()
 		return {
 			'name': 'Terms Aggregation',
 			'text': 'The Terms Aggregation lists the different present values with their count',
-			'url': 'https://www.elastic.co/guide/en/elasticsearch/reference/1.5/search-aggregations-bucket-terms-aggregation.html',
+			'url': 'https://www.elastic.co/guide/en/elasticsearch/reference/current/search-aggregations-bucket-terms-aggregation.html',
 			'form': {
 				'name': {
 					'type': 'text',

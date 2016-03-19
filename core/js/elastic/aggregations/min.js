@@ -15,7 +15,7 @@ function MinAggregation()
 		return {
 			'name': 'Min Aggregation',
 			'text': 'The Min Aggregation returns the lowest value for the given field',
-			'url': 'https://www.elastic.co/guide/en/elasticsearch/reference/1.5/search-aggregations-metrics-min-aggregation.html',
+			'url': 'https://www.elastic.co/guide/en/elasticsearch/reference/current/search-aggregations-metrics-min-aggregation.html',
 			'form': {
 				'name': {
 					'type': 'text',

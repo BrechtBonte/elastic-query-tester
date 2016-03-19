@@ -15,7 +15,7 @@ function SumAggregation()
 		return {
 			'name': 'Sum Aggregation',
 			'text': 'The Sum Aggregation calculates the sum of the given field\'s values',
-			'url': 'https://www.elastic.co/guide/en/elasticsearch/reference/1.5/search-aggregations-metrics-sum-aggregation.html',
+			'url': 'https://www.elastic.co/guide/en/elasticsearch/reference/current/search-aggregations-metrics-sum-aggregation.html',
 			'form': {
 				'name': {
 					'type': 'text',

@@ -15,7 +15,7 @@ function StatsAggregation()
 		return {
 			'name': 'Stats Aggregation',
 			'text': 'The Stats Aggregation calculates the min, max, sum, count and average of the given field\'s values',
-			'url': 'https://www.elastic.co/guide/en/elasticsearch/reference/1.5/search-aggregations-metrics-stats-aggregation.html',
+			'url': 'https://www.elastic.co/guide/en/elasticsearch/reference/current/search-aggregations-metrics-stats-aggregation.html',
 			'form': {
 				'name': {
 					'type': 'text',

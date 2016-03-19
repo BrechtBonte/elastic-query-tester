@@ -14,7 +14,7 @@ function GlobalAggregation()
 		return {
 			'name': 'Global Aggregation',
 			'text': 'The Global Aggregation cancels the effect of all filters for it\'s nested aggregations',
-			'url': 'https://www.elastic.co/guide/en/elasticsearch/reference/1.5/search-aggregations-bucket-global-aggregation.html',
+			'url': 'https://www.elastic.co/guide/en/elasticsearch/reference/current/search-aggregations-bucket-global-aggregation.html',
 			'form': {
 				'name': {
 					'type': 'text',

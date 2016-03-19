@@ -15,7 +15,7 @@ function MissingAggregation()
 		return {
 			'name': 'Missing Aggregation',
 			'text': 'The Missing Aggregation counts documents where the give field is missing or null',
-			'url': 'https://www.elastic.co/guide/en/elasticsearch/reference/1.5/search-aggregations-bucket-missing-aggregation.html',
+			'url': 'https://www.elastic.co/guide/en/elasticsearch/reference/current/search-aggregations-bucket-missing-aggregation.html',
 			'form': {
 				'name': {
 					'type': 'text',

@@ -15,7 +15,7 @@ function NestedAggregation()
 		return {
 			'name': 'Nested Aggregation',
 			'text': 'The Nested Aggregation allows you to aggregate on nested objects',
-			'url': 'https://www.elastic.co/guide/en/elasticsearch/reference/1.5/search-aggregations-bucket-nested-aggregation.html',
+			'url': 'https://www.elastic.co/guide/en/elasticsearch/reference/current/search-aggregations-bucket-nested-aggregation.html',
 			'form': {
 				'name': {
 					'type': 'text',

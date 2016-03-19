@@ -15,7 +15,7 @@ function AvgAggregation()
 		return {
 			'name': 'Avg Aggregation',
 			'text': 'The Avg Aggregation calculates the average of the given field\'s values',
-			'url': 'https://www.elastic.co/guide/en/elasticsearch/reference/1.5/search-aggregations-metrics-avg-aggregation.html',
+			'url': 'https://www.elastic.co/guide/en/elasticsearch/reference/current/search-aggregations-metrics-avg-aggregation.html',
 			'form': {
 				'name': {
 					'type': 'text',

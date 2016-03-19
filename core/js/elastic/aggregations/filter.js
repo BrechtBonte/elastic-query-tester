@@ -15,7 +15,7 @@ function FilterAggregation()
 		return {
 			'name': 'Filter Aggregation',
 			'text': 'The Filter Aggregation applies a filter to the nested aggregations',
-			'url': 'https://www.elastic.co/guide/en/elasticsearch/reference/1.5/search-aggregations-bucket-filter-aggregation.html',
+			'url': 'https://www.elastic.co/guide/en/elasticsearch/reference/current/search-aggregations-bucket-filter-aggregation.html',
 			'form': {
 				'name': {
 					'type': 'text',
@@ -39,7 +39,7 @@ function FilterAggregation()
 	{
 		return {
 			'filter': {
-				'type': 'filter',
+				'type': 'query',
 				'multiple': false
 			},
 			'aggregations': {

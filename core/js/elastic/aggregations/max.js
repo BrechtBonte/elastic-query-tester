@@ -15,7 +15,7 @@ function MaxAggregation()
 		return {
 			'name': 'Max Aggregation',
 			'text': 'The Min Aggregation returns the highest value for the given field',
-			'url': 'https://www.elastic.co/guide/en/elasticsearch/reference/1.5/search-aggregations-metrics-max-aggregation.html',
+			'url': 'https://www.elastic.co/guide/en/elasticsearch/reference/current/search-aggregations-metrics-max-aggregation.html',
 			'form': {
 				'name': {
 					'type': 'text',
