@@ -1,23 +1,23 @@
-// Missing Filter
-function MissingFilter()
+// Exists query
+function ExistsQuery()
 {
 	var _fieldName;
 
 	this.getType = function()
 	{
-		return 'filter';
+		return 'query';
 	};
 
 	this.getInfo = function()
 	{
 		return {
-			'name': 'Missing Filter',
-			'text': 'The Missing filter matches all documents containing a field without the given name, or if it\'s value is NULL',
-			'url': 'https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-exists-filter.html',
+			'name': 'Exists Query',
+			'text': 'Returns documents that have at least one non-null value for field',
+			'url': 'https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-exists-query.html',
 			'form': {
 				'field name': {
 					'type': 'text',
-					'required': false,
+					'required': true,
 					'value': _fieldName
 				}
 			}
@@ -40,22 +40,20 @@ function MissingFilter()
 
 	this.isSetUp = function()
 	{
-		return typeof(_fieldName) != 'undefined';
+		return _fieldName;
 	};
 
 	this.canRun = function()
 	{
-		return this.isSetUp;
+		return this.isSetUp();
 	};
 
 	this.toJson = function()
 	{
-		var jsonObject = {
-			"missing": {
+		return {
+			"exists": {
 				"field": _fieldName
 			}
 		};
-
-		return jsonObject;
 	}
 }

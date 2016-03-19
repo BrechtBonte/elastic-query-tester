@@ -1,20 +1,21 @@
-// Term Filter
-function TermFilter()
+// Prefix query
+function PrefixQuery()
 {
 	var _fieldName,
-		_value;
+		_value,
+		_boost;
 
 	this.getType = function()
 	{
-		return 'filter';
+		return 'query';
 	};
 
 	this.getInfo = function()
 	{
 		return {
-			'name': 'Term Filter',
-			'text': 'The term filter allows you to filter terms by their value',
-			'url': 'https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-term-filter.html',
+			'name': 'Prefix Query',
+			'text': 'The prefix query allows you to query for terms starting with a certain string',
+			'url': 'https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-prefix-query.html',
 			'form': {
 				'field name': {
 					'type': 'text',
@@ -25,6 +26,11 @@ function TermFilter()
 					'type': 'text',
 					'required': true,
 					'value': _value
+				},
+				'boost': {
+					'type': 'text',
+					'required': false,
+					'value': _boost
 				}
 			}
 		};
@@ -38,6 +44,9 @@ function TermFilter()
 				break;
 			case 'value':
 				_value = value;
+				break;
+			case 'boost':
+				_boost = value;
 				break;
 		}
 	};
@@ -59,10 +68,15 @@ function TermFilter()
 
 	this.toJson = function()
 	{
-		var jsonObject = {
-			"term": {}
-		};
-		jsonObject.term[ _fieldName ] = _value;
+		var jsonObject = {"prefix": {}};
+		if (_boost) {
+			jsonObject.term[ _fieldName ] = {
+				"value": _value,
+				"boost": _boost
+			};
+		} else {
+			jsonObject.term[ _fieldName ] = _value;
+		}
 
 		return jsonObject;
 	}

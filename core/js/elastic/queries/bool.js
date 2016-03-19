@@ -4,6 +4,7 @@ function BoolQuery()
 	var _must = [],
 		_mustNot = [],
 		_should = [],
+		_filter,
 		_minimumMatches,
 		_boost;
 
@@ -96,6 +97,9 @@ function BoolQuery()
 			case 'should':
 				this.addShould(part);
 				break;
+			case 'filter':
+				_filter = part;
+				break;
 		}
 	};
 
@@ -110,6 +114,9 @@ function BoolQuery()
 				break;
 			case 'should':
 				this.removeShould(part);
+				break;
+			case 'filter':
+				_filter = undefined;
 				break;
 		}
 	};
@@ -128,13 +135,17 @@ function BoolQuery()
 			'should': {
 				'type': 'query',
 				'multiple': true
+			},
+			'filter': {
+				'type': 'query',
+				'multiple': false
 			}
 		};
 	};
 
 	this.isSetUp = function()
 	{
-		return _must.length || _mustNot.length || _should.length;
+		return _must.length || _mustNot.length || _should.length || _filter;
 	};
 
 	this.canRun = function()
@@ -164,6 +175,9 @@ function BoolQuery()
 					return false;
 				}
 			});
+		}
+		if (allOk && _filter) {
+			_filter.canRun();
 		}
 
 		return allOk;
@@ -206,6 +220,10 @@ function BoolQuery()
 					jsonObject.bool.should.push( _should[ i ].toJson() );
 				}
 			}
+		}
+
+		if (_filter) {
+			jsonObject.bool.filter = _filter.toJson();
 		}
 
 		if (typeof(_minimumMatches) != 'undefined') {

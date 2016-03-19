@@ -2,7 +2,6 @@
 function MainQuery()
 {
 	var _query,
-		_filter,
 		_aggregations = [],
 		_size = 10;
 
@@ -36,9 +35,6 @@ function MainQuery()
 			case 'query':
 				_query = part;
 				break;
-			case 'filter':
-				_filter = part;
-				break;
 			case 'aggregations':
 				_aggregations.push(part);
 				break;
@@ -50,9 +46,6 @@ function MainQuery()
 		switch (name) {
 			case 'query':
 				if (part == _query) _query = undefined;
-				break;
-			case 'filter':
-				if (part == _filter) _filter = undefined;
 				break;
 			case 'aggregations':
 				var index = _aggregations.indexOf(part);
@@ -70,10 +63,6 @@ function MainQuery()
 				'type': 'query',
 				'multiple': false
 			},
-			'filter': {
-				'type': 'filter',
-				'multiple': false
-			},
 			'aggregations': {
 				'type': 'aggregation',
 				'multiple': true
@@ -83,15 +72,12 @@ function MainQuery()
 
 	this.isSetUp = function()
 	{
-		return  (typeof(_query) != 'undefined' && typeof(_size) != 'undefined') ||
-				(_aggregations.length > 0 && typeof(_filter) == 'undefined');
+		return  typeof(_query) != 'undefined' && typeof(_size) != 'undefined';
 	};
 
 	this.canRun = function()
 	{
-		var allOk = this.isSetUp() && 
-				(typeof(_query) == 'undefined' || _query.canRun()) &&
-				(typeof(_filter) == 'undefined' || _filter.canRun());
+		var allOk = this.isSetUp() && _query.canRun();
 
 		for (var i = 0; i < _aggregations.length; i++) {
 			if (!_aggregations[ i ].canRun()) {
@@ -117,14 +103,6 @@ function MainQuery()
 				"size": _size,
 				"query": _query.toJson()
 			};
-			if (_filter) {
-				jsonObject.query = {
-					"filtered": {
-						"query": _query.toJson(),
-						"filter": _filter.toJson()
-					}
-				};
-			}
 			if (_aggregations.length > 0) {
 				jsonObject.aggregations = aggregationObject;
 			}

@@ -1,20 +1,21 @@
-// Prefix Filter
-function PrefixFilter()
+// Wildcard query
+function WildcardQuery()
 {
 	var _fieldName,
-		_value;
+		_value,
+		_boost;
 
 	this.getType = function()
 	{
-		return 'filter';
+		return 'query';
 	};
 
 	this.getInfo = function()
 	{
 		return {
-			'name': 'Prefix Filter',
-			'text': 'The Prefix Filter allows you to filter terms by their value according to a prefix',
-			'url': 'https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-prefix-filter.html',
+			'name': 'Wildcard Query',
+			'text': 'The wildcard query allows you to query for terms using wildcards',
+			'url': 'https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-wildcard-query.html',
 			'form': {
 				'field name': {
 					'type': 'text',
@@ -25,6 +26,11 @@ function PrefixFilter()
 					'type': 'text',
 					'required': true,
 					'value': _value
+				},
+				'boost': {
+					'type': 'text',
+					'required': false,
+					'value': _boost
 				}
 			}
 		};
@@ -38,6 +44,9 @@ function PrefixFilter()
 				break;
 			case 'value':
 				_value = value;
+				break;
+			case 'boost':
+				_boost = value;
 				break;
 		}
 	};
@@ -59,10 +68,15 @@ function PrefixFilter()
 
 	this.toJson = function()
 	{
-		var jsonObject = {
-			"prefix": {}
-		};
-		jsonObject.prefix[ _fieldName ] = _value;
+		var jsonObject = {"wildcard": {}};
+		if (_boost) {
+			jsonObject.term[ _fieldName ] = {
+				"value": _value,
+				"boost": _boost
+			};
+		} else {
+			jsonObject.term[ _fieldName ] = _value;
+		}
 
 		return jsonObject;
 	}

@@ -4,21 +4,22 @@ $(document).ready(function() {
 	var blocks = {
 		'query': {
 			'Bool': 'BoolQuery',
+			'Common': 'CommonQuery',
+			'Exists': 'ExistsQuery',
+			'Fuzzy': 'FuzzyQuery',
+			'HasChild': 'HasChildQuery',
+			'HasParent': 'HasParentQuery',
+			'Ids': 'IdsQuery',
+			'Match': 'MatchQuery',
+			'Match All': 'MatchAllQuery',
+			'Multi Match': 'MultiMatchQuery',
 			'Nested': 'NestedQuery',
+			'Prefix': 'PrefixQuery',
 			'Range': 'RangeQuery',
+			'Regexp': 'RegexpQuery',
 			'Term': 'TermQuery',
-			'Match All': 'MatchAllQuery'
-		},
-		'filter': {
-			'And': 'AndFilter',
-			'Exists': 'ExistsFilter',
-			'Missing': 'MissingFilter',
-			'Nested': 'NestedFilter',
-			'Not': 'NotFilter',
-			'Or': 'OrFilter',
-			'Range': 'RangeFilter',
-			'Term': 'TermFilter',
-			'Prefix': 'PrefixFilter'
+			'Type': 'TypeQuery',
+			'Wildcard': 'WildcardQuery'
 		},
 		'aggregation': {
 			'Avg': 'AvgAggregation',
@@ -144,7 +145,15 @@ $(document).ready(function() {
 
 				switch(field.type) {
 					case 'text':
-						fieldHtml = '<input type="text" class="form-control field-inp" id="'+name+'-inp" placeholder="'+name+'" value="'+value+'" name="'+name+'" />';
+						if (field.info) {
+							fieldHtml =
+								'<div class="input-group">' +
+									'<input type="text" class="form-control field-inp" id="'+name+'-inp" placeholder="'+name+'" value="'+value+'" name="'+name+'" />' +
+									'<div class="input-group-addon">' + field.info + '</div>' +
+								'</div>';
+						} else {
+							fieldHtml = '<input type="text" class="form-control field-inp" id="' + name + '-inp" placeholder="' + name + '" value="' + value + '" name="' + name + '" />';
+						}
 						break;
 					case 'bool':
 						fieldHtml = '<div class="checkbox"><label><input type="checkbox" class="field-inp checkbox-inp" name="'+name+'"'+(value ? ' checked="checked"' : '')+' /></label></div>'

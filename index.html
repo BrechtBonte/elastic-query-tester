@@ -48,13 +48,6 @@
 							</div>
 
 							<div class="nesting form-inline">
-								<p class="nesting-name">filter</p>
-								<select class="nesting-select form-control" data-type="filter" data-name="filter" data-multiple="false">
-									<option value="">add a filter</option>
-								</select>
-							</div>
-
-							<div class="nesting form-inline">
 								<p class="nesting-name">aggregations</p>
 								<select class="nesting-select form-control" data-type="aggregation" data-name="aggregations" data-multiple="true">
 									<option value="">add an aggregation</option>
@@ -147,20 +140,22 @@
 
 	<script src="core/js/elastic/main-query.js"></script>
 	<script src="core/js/elastic/queries/bool.js"></script>
-	<script src="core/js/elastic/queries/nested.js"></script>
-	<script src="core/js/elastic/queries/range.js"></script>
-	<script src="core/js/elastic/queries/term.js"></script>
+	<script src="core/js/elastic/queries/common.js"></script>
+	<script src="core/js/elastic/queries/exists.js"></script>
+	<script src="core/js/elastic/queries/fuzzy.js"></script>
+	<script src="core/js/elastic/queries/has-child.js"></script>
+	<script src="core/js/elastic/queries/has-parent.js"></script>
+	<script src="core/js/elastic/queries/ids.js"></script>
+	<script src="core/js/elastic/queries/match.js"></script>
 	<script src="core/js/elastic/queries/matchAll.js"></script>
-
-	<script src="core/js/elastic/filters/and.js"></script>
-	<script src="core/js/elastic/filters/exists.js"></script>
-	<script src="core/js/elastic/filters/missing.js"></script>
-	<script src="core/js/elastic/filters/nested.js"></script>
-	<script src="core/js/elastic/filters/not.js"></script>
-	<script src="core/js/elastic/filters/or.js"></script>
-	<script src="core/js/elastic/filters/range.js"></script>
-	<script src="core/js/elastic/filters/term.js"></script>
-	<script src="core/js/elastic/filters/prefix.js"></script>
+	<script src="core/js/elastic/queries/multi-match.js"></script>
+	<script src="core/js/elastic/queries/nested.js"></script>
+	<script src="core/js/elastic/queries/prefix.js"></script>
+	<script src="core/js/elastic/queries/range.js"></script>
+	<script src="core/js/elastic/queries/regexp.js"></script>
+	<script src="core/js/elastic/queries/term.js"></script>
+	<script src="core/js/elastic/queries/type.js"></script>
+	<script src="core/js/elastic/queries/wildcard.js"></script>
 
 	<script src="core/js/elastic/aggregations/avg.js"></script>
 	<script src="core/js/elastic/aggregations/filter.js"></script>
