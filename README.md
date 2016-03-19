@@ -1,6 +1,6 @@
 # elastic-query-tester
 
-A playground to get familiar with the way elasticsearch handles queries, filters and aggregations.
+A playground to get familiar with the way elasticsearch handles queries and aggregations.
 
 *Go to [live version](http://brechtbonte.github.io/elastic-query-tester/).*
 
@@ -17,21 +17,22 @@ Currently present blocks:
 
 **Queries**
 - Bool
-- Match All
-- Nested
-- Range
-- Term
-
-**Filters**
-- And
+- Common
 - Exists
-- Missing
+- Fuzzy
+- Has Child
+- Has Parent
+- Ids
+- Match
+- Match All
+- Multi Match
 - Nested
-- Not
-- Or
-- Range
-- Term
 - Prefix
+- Range
+- Regexp
+- Term
+- Type
+- Wildcard
 
 **Aggregations**
 - Avg
