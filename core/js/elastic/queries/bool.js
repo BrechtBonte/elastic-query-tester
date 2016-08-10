@@ -138,7 +138,7 @@ function BoolQuery()
 			},
 			'filter': {
 				'type': 'query',
-				'multiple': false
+				'multiple': true
 			}
 		};
 	};
