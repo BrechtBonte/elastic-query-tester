@@ -17,9 +17,9 @@ $(document).ready(function() {
 		if (hostInput.val()) {
 			hostForm.find('input, button').prop('disabled', true);
 
-			var url = hostInput.val() + '/?hello=elasticsearch';
+			var url = hostInput.val();
 			var http = new XMLHttpRequest();
-			http.open('HEAD', url);
+			http.open('GET', url);
 			http.onreadystatechange = function() {
 				if (this.readyState == this.DONE) {
 					if (this.status == 200) {
